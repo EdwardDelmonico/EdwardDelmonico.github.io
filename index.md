@@ -8,12 +8,12 @@ layout: default
 
 Edward Delmonico is a master's student at the University of Helsinki. He is studying General Linguistics and completing an additional module in Language Technology. He is originally from Phoenix, Arizona, and will never again of his own volition live somewhere that hot. Finland's cold, gloomy weather suits him just fine.
 
-In his spare time he enjoys reading, cooking, hiking, and games of all varieties. Completing the New York Times Saturday crossword in under ten minutes stands among his proudest achievements. He also loves cats, and is casting about for even the slimmest justification to adopt one.
-## Sightings
+In his spare time he enjoys reading, cooking, hiking, and games of all varieties. Completing the New York Times Saturday crossword in under ten minutes stands among his proudest achievements. He also loves cats, and is casting about for even the slimmest excuse to adopt one.
+## Find him on
 
-[Look upon his works](https://github.com/EdwardDelmonico)---[Employ Him](https://www.linkedin.com/in/edward-delmonico-841685a4/) 
+[GitHub](https://github.com/EdwardDelmonico)---[LinkedIn](https://www.linkedin.com/in/edward-delmonico-841685a4/)---[Goodreads](https://www.goodreads.com/user/show/59718929-edward)---[Letterboxd](https://letterboxd.com/WelcomedAndroid/)
 
-## Commune
+## Correspond
 
 Edward can be reached at edward.delmonico@helsinki.fi. 
 
