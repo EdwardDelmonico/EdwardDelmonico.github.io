@@ -6,9 +6,9 @@ layout: default
 
 <img src="assets/images/cover6.jpg" alt="Photo" hspace="20" width="30%" align="right"/>
 
-Edward Delmonico is a master's student at the University of Helsinki. He is studying General Linguistics and completing an additional module in Language Technology. He is originally from Phoenix, Arizona, and will never again of his own volition live somewhere that hot. Finland's cold, gloomy weather suits him just fine.
+Edward Delmonico is a master's student at the University of Helsinki. He is studying General Linguistics and completing an additional module in Language Technology. He is originally from Phoenix, Arizona, and will never again of his own volition live somewhere that hot. Finland's cold, gloomy weather suits him just fine, thank you.
 
-In his spare time he enjoys reading, cooking, hiking, and games of all varieties. Completing the New York Times Saturday crossword in under ten minutes stands among his proudest achievements. He also loves cats, and is casting about for even the slimmest excuse to adopt one.
+In his spare time he enjoys reading, cooking, hiking, and games of all varieties. Completing the New York Times Saturday crossword in under ten minutes stands among his proudest achievements. He also loves cats, and is casting about for even the slimmest excuse to adopt one. 
 ## Find him on
 
 [GitHub](https://github.com/EdwardDelmonico)---[LinkedIn](https://www.linkedin.com/in/edward-delmonico-841685a4/)---[Goodreads](https://www.goodreads.com/user/show/59718929-edward)---[Letterboxd](https://letterboxd.com/WelcomedAndroid/)
@@ -35,4 +35,10 @@ Edward can be reached at edward.delmonico@helsinki.fi.
 
 [This very web page](https://github.com/EdwardDelmonico/EdwardDelmonico.github.io)- Final project for Command Line course
 
-## Misc. 
+## Misc.
+If you are interested in 
+[Obscure tabletop games](https://www.montecookgames.com/store/product/invisible-sun/),
+[Constructed languages](https://cals.info/language/),
+or 
+[Cosmic horror](https://rustyquill.com/show/the-magnus-archives/),
+get in touch right away! We should be friends.
