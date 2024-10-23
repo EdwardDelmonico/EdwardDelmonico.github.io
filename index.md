@@ -29,4 +29,10 @@ Edward can be reached at edward.delmonico@helsinki.fi.
 
 ## Projects
 
+[The Demiurge](https://github.com/EdwardDelmonico/demiurge)- Discord bot that rolls dice, draws cards, and divines the future for games of Invisible Sun
+
+[CSC205Final](https://github.com/EdwardDelmonico/CSC205Final)- Activity suite created for Data Structures & Object-Oriented Programming course
+
+[This very web page](https://github.com/EdwardDelmonico/EdwardDelmonico.github.io)- Final project for Command Line course
+
 ## Misc. 
