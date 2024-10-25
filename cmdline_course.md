@@ -77,12 +77,12 @@ cat EXAMPLE.txt | tr -d '\r' | tr -s "[:space:]" "\n" | tr -d "[:punct:]" | sort
 
 ## Week 4: Advanced Corpus Processing
 
-In the fourth week, we built upon our knowledge of text processing in order 
+In the fourth week, we built upon our knowledge of text processing in order to accomplish even more sophisticated manipulations of text files. The main tool for this was the `sed` command. While `sed` is able to delete entire lines from a file, this is only the beginning. `sed` can also be used to find and replace patterns in a text file, and it becomes especially powerful when combined with the aforementioned regular expressions. By combining regular expression-augmented `sed` commands with command piping from the previous week, we became able to quite quickly transform any text file into a frequency list, a sentence-per-line list, or even a list of n-grams--that is, a list of adjacent words. Below can be seen a series of piped commands that uses `sed` along with commands from the previous week to convert a text file into sentence-per-line format.
 
+```zsh
+cat EXAMPLE.txt | sed 's/^$/#/' | tr '\n' ' ' | sed -E 's/([.?!]) ([A-Z])/\#1 \2/g' | tr '#' '\n' | sed 's/^ *//'| sed 's/ *$//' > EXAMPLE.sent
 ```
-No language indicated, so no syntax highlighting. 
-But let's throw in a <b>tag</b>.
-```
+4: From left to right: open EXAMPLE.txt, replace all empty lines with '#', convert all newline characters to spaces, insert a '#' character between every punctuation mark and the first word of the following sentence, convert all '#' characters to newline characters, delete all leading spaces on each line, delete all trailing spaces on each line, and save to EXAMPLE.sent
 
 ## Week 5: Scripting and Configuration Files
 
