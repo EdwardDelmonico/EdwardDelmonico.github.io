@@ -4,6 +4,8 @@ layout: default
 
 ## Introduction
 
+<img src="assets/images/xkcd_fight.png" alt="Photo" hspace="20" width="50%" align="right"/>
+
 The aim of this course was to furnish linguists with the basic command-line tools necessary to branch into the computational aspects of their field. Coursework included basic UNIX navigation, installing and running programs from the command line, regular expressions, basic corpus processing, basic bash scripting, version control, remote servers, and troubleshooting when (inevitably) something goes awry. Though all material was posted online, there was an optional in-person session each week during which students could receive guidance from instructors. Coursework consisted of weekly quizzes to check comprehension of the material. The class culminated in a final project, which entailed building the website you're currently viewing and hosting it on GitHub Pages.
 
 ## Week 1: The Command Line Environment
@@ -56,6 +58,7 @@ Octal:
 ```zsh
 chmod 644 file_name
 ```
+2: Symbolic and octal notation for configuring read-write permissions for Owner and read-only permissions for all others 
 
 Next, we learned about managing processes from the command line. In particular, the `ps` command with optional `-f` flag were discussed. This is used to display all processes currently running, which can be subsequently killed using the `kill` command.
 
@@ -63,12 +66,18 @@ Finally, we set up credentials with the University of Helsinki's Puhti server in
 
 ## Week 3: Basic Corpus Processing
 
+In the third week, we learned about text encoding and simple regular expressions. To begin, we discussed the various schemes by which binary input is processed into text files. These formats include ASCII and UTF-8 among many, many others. Then, we learned briefly about some of the common commands used to switch between encoding formats, as well as how to set defaults within the shell environment.
+
+From this we transitioned to text file processing itself. In particular, we learned how the `grep` command can be used to locate particular items within an arbitrarily large text file. Combining `grep` with regular expressions allows for extremely precise searching; one can, for example, locate all words that begin with "pre-" and end with "-ed". This becomes especially powerful when combined with common commands for transforming text files into more useable formats; in particular, the `tr` command is a versatile tool which can accomplish everything from whitespace removal to text substitution (especially when using regular expressions). Combining it with the `uniq` command, which filters out and reports all duplicate lines, and the self-explanatory `sort` command, one can efficiently generate frequency lists for words and phrases. This process can be made even more efficient using the 'pipe' character `|`, which routes the output of the operation on its left to the input of the operation on its right. An example operation can be seen below.
+
+```zsh
+cat EXAMPLE.txt | tr -d '\r' | tr -s "[:space:]" "\n" | tr -d "[:punct:]" | sort | uniq -i > EXAMPLE.wordlist.txt
 ```
-No language indicated, so no syntax highlighting. 
-But let's throw in a <b>tag</b>.
-```
+3: A series of piped commands that transform EXAMPLE.txt into an alphabetically-ordered word list, with each word appearing on its own line and devoid of punctuation. Case is also ignored. The result output is redirected into the file EXAMPLE.wordlist.txt. From left to right, these commands perform the following: open EXAMPLE.txt, remove carriage returns, transform spaces into newlines so that each word has its own line, remove punctuation, sort lines into alphabetical order, delete duplicates (ignoring case), and save to EXAMPLE.wordlist.txt.
 
 ## Week 4: Advanced Corpus Processing
+
+In the fourth week, we built upon our knowledge of text processing in order 
 
 ```
 No language indicated, so no syntax highlighting. 
