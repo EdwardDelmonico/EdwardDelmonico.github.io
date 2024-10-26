@@ -6,7 +6,7 @@ layout: default
 
 <img src="assets/images/xkcd_fight.png" alt="Photo" hspace="20" width="50%" align="right"/>
 
-The aim of this course was to furnish linguists with the basic command-line tools necessary to branch into the computational aspects of their field. Coursework included basic UNIX navigation, installing and running programs from the command line, regular expressions, basic corpus processing, basic bash scripting, version control, remote servers, and troubleshooting when (inevitably) something goes awry. Though all material was posted online, there was an optional in-person session each week during which students could receive guidance from instructors. Coursework consisted of weekly quizzes to check comprehension of the material. The class culminated in a final project, which entailed building the website you're currently viewing and hosting it on GitHub Pages.
+The aim of this course was to furnish linguists with the basic command-line tools necessary to embark upon the computational aspects of their field. Coursework included basic UNIX navigation, installing and running programs from the command line, regular expressions, basic corpus processing, basic bash scripting, version control, remote servers, and troubleshooting when (inevitably) something goes awry. Though all material was posted online, there was an optional in-person session each week during which students could receive guidance from instructors. Coursework consisted of weekly quizzes to check comprehension of the material. The class culminated in a final project, which entailed building the website you're currently viewing and hosting it on GitHub Pages.
 
 ## Week 1: The Command Line Environment
 
@@ -86,17 +86,70 @@ cat EXAMPLE.txt | sed 's/^$/#/' | tr '\n' ' ' | sed -E 's/([.?!]) ([A-Z])/\#1 \2
 
 ## Week 5: Scripting and Configuration Files
 
+Thusfar, we had developed some exceedingly powerful techniques for text processing by piping a series of commands together to perform sophisticated operations. However, there existed a very significant bottleneck: the same sequence of commands needs to be typed (or pasted) anew into the shell for each new text file to be processed. This week added a new level of sophistication to our methodology by way of scripting. Scripts can pipe commands together, take arguments, obey conditional instructions, and return outputs. Below can be seen a sample bash script.
+
+By writing our text processing commands into text files (the aforementioned 'scripts'), we can automate the text processing command sequence. Then, we can simply run the script from the command line to execute our sequence. Another powerful scripting tool is variable definition, which allows us to set values we can then access later on in our programs. We also explored environment variables, which are values that govern the functionality of the command line interface itself. Shell protocols such as paths for script execution, information displayed in the prompt, and text encoding are all set using environment variables. By modifying environment variables, users can customize and personalize the interface in order to tailor it to their needs. 
+
+```bash
+#! /bin/bash
+
+# script: freqlist.sh
+# author: Edward Delmonico (September 2024)
+#
+# Read a text file from the standard input
+# and compute a fequency list of all words
+# in the text. Print to standard output.
+
+if [ $# -ne 2 ]
+then
+  echo 'noooo i need two arguments what are you doooooing'
+  exit 1
+fi
+
+cat $1 |
+tr -d '\r' | 
+tr -s "[:space:]" "\n" | 
+tr -d "[:punct:]" | 
+sort | 
+uniq -c | 
+sort -nr > $2
+echo "$0 complete"
 ```
-No language indicated, so no syntax highlighting. 
-But let's throw in a <b>tag</b>.
-```
+5: Bash script for transforming a text file into a word frequency list. The user supplies a source text file to be operated on and a destination file to which the results are written. The script first checks to make sure both a source and destination are supplied, then performs the following operations: remove whitespace, convert spaces to newlines, trim punctuation, sort words into alphabetical order, delete duplicate words (while reporting number of duplicates), sort by number of duplicates, and redirect output into destination file.
 
 ## Week 6: Installing Programs
 
+In week 6, we embarked upon the dizzying world of package installation and management. This is far less trivial a topic than it might initially appear-- any given program installed from the command line depends on a number of other programs to work, which programs depend on yet others, and so on. Package managers such as brew or pip come to the rescue here. In addition to installing programs, they also install and/or update all of the program's dependencies in order for it to function. Package managers become especially crucial when different programs depend on different *versions* of the same program to work, necessitating the installation of different versions in different directories. Python in particular offers an elegant solution to this problem in the form of *virtual environments*, which enables one to create an environment siloed off from the rest of one's machine in order to freely install and run programs. Generally speaking, we spent quite a while locating programs in various package managers and following the instructions to safely install them.
+
+In addition, we familiarized ourselves with Makefiles. Makefiles add yet another layer of sophistication to scripts, enabling a user to run specific script actions on collections of files. This is accomplished by compiling a list of source files, specifying patterns of conversion, and establishing dependency rules to accomplish these conversions. Below can be seen a Makefile that is able to trim metadata from a list of book text files as well as convert them to sentence-per-line format and generate frequency lists.
+
+```makefile
+BOOKS=alice christmas_carol dracula frankenstein heart_of_darkness life_of_bee moby_dick modest_propsal pride_and_prejudice tale_of_two_cities ulysses
+
+FREQLISTS=$(BOOKS:%=results/%.freq.txt)
+SENTEDBOOKS=$(BOOKS:%=results/%.sent.txt)
+NO_MD_BOOKS=$(BOOKS:%=data/%.no_md.txt)
+
+all: $(FREQLISTS) $(SENTEDBOOKS) $(NO_MD_BOOKS) results/all.freq.txt results/all.sent.txt
+
+clean:
+	rm -f results/* data/*no_md.txt
+
+%.no_md.txt: %.txt
+	python3 src/remove_gutenberg_metadata.py $< > $@
+
+results/%.freq.txt: data/%.no_md.txt 
+	src/freqlist.sh $< > $@
+
+results/%.sent.txt: data/%.no_md.txt
+	src/sent_per_line.sh $< > $@
+
+data/all.no_md.txt: $(NO_MD_BOOKS)
+	cat $^ > $@
+	
+no_md: $(NO_MD_BOOKS)
 ```
-No language indicated, so no syntax highlighting. 
-But let's throw in a <b>tag</b>.
-```
+6: Makefile for metadata trimming, sentence-per-line formatting, and frequency list generation. The first line specifies the list of books upon which the Makefile operates. The next three lines specify conversion patterns, dictating what list is passed in to the pattern as an input as well as how (and where) the output is written. Below this can be seen the rules themselves, which run scripts on their input files and generate the appropriate output. Each rule can be executed individually, or all at once using the `all` rule. The `clean` rule can also be used to delete all generated files, cutting down on filesize and making the program more portable. 
 
 ## Week 7: Version Control
 
