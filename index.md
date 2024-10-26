@@ -37,8 +37,8 @@ Edward can be reached at edward.delmonico@helsinki.fi.
 
 ## Misc.
 If you are interested in 
-[Obscure tabletop games](https://www.montecookgames.com/store/product/invisible-sun/),
-[Constructed languages](https://cals.info/language/),
+[obscure tabletop games](https://www.montecookgames.com/store/product/invisible-sun/),
+[constructed languages](https://cals.info/language/),
 or 
-[Cosmic horror](https://rustyquill.com/show/the-magnus-archives/),
+[cosmic horror](https://rustyquill.com/show/the-magnus-archives/),
 get in touch right away! We should be friends.
