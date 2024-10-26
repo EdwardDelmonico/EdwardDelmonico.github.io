@@ -15,7 +15,7 @@ During the first week of class, we focused on the fundamentals of navigating a U
 ```zsh
 echo Hello, World > hello.txt
 ```
-1: basic UNIX command that causes the shell to echo a string and redirect the output into a text file
+*1: basic UNIX command that causes the shell to echo a string and redirect the output into a text file.*
 
 Below is a non-exhaustive list of the commands introduced in this section, along with notes on their usage and important flags where applicable.
 
@@ -58,7 +58,7 @@ Octal:
 ```zsh
 chmod 644 file_name
 ```
-2: Symbolic and octal notation for configuring read-write permissions for Owner and read-only permissions for all others 
+*2: Symbolic and octal notation for configuring read-write permissions for Owner and read-only permissions for all others.*
 
 Next, we learned about managing processes from the command line. In particular, the `ps` command with optional `-f` flag were discussed. This is used to display all processes currently running, which can be subsequently killed using the `kill` command.
 
@@ -73,7 +73,7 @@ From this we transitioned to text file processing itself. In particular, we lear
 ```zsh
 cat EXAMPLE.txt | tr -d '\r' | tr -s "[:space:]" "\n" | tr -d "[:punct:]" | sort | uniq -i > EXAMPLE.wordlist.txt
 ```
-3: A series of piped commands that transform EXAMPLE.txt into an alphabetically-ordered word list, with each word appearing on its own line and devoid of punctuation. Case is also ignored. The result output is redirected into the file EXAMPLE.wordlist.txt. From left to right, these commands perform the following: open EXAMPLE.txt, remove carriage returns, transform spaces into newlines so that each word has its own line, remove punctuation, sort lines into alphabetical order, delete duplicates (ignoring case), and save to EXAMPLE.wordlist.txt.
+*3: A series of piped commands that transform EXAMPLE.txt into an alphabetically-ordered word list, with each word appearing on its own line and devoid of punctuation. Case is also ignored. The result output is redirected into the file EXAMPLE.wordlist.txt. From left to right, these commands perform the following: open EXAMPLE.txt, remove carriage returns, transform spaces into newlines so that each word has its own line, remove punctuation, sort lines into alphabetical order, delete duplicates (ignoring case), and save to EXAMPLE.wordlist.txt.*
 
 ## Week 4: Advanced Corpus Processing
 
@@ -82,7 +82,7 @@ In the fourth week, we built upon our knowledge of text processing in order to a
 ```zsh
 cat EXAMPLE.txt | sed 's/^$/#/' | tr '\n' ' ' | sed -E 's/([.?!]) ([A-Z])/\#1 \2/g' | tr '#' '\n' | sed 's/^ *//'| sed 's/ *$//' > EXAMPLE.sent
 ```
-4: From left to right: open EXAMPLE.txt, replace all empty lines with '#', convert all newline characters to spaces, insert a '#' character between every punctuation mark and the first word of the following sentence, convert all '#' characters to newline characters, delete all leading spaces on each line, delete all trailing spaces on each line, and save to EXAMPLE.sent
+*4: From left to right: open EXAMPLE.txt, replace all empty lines with '#', convert all newline characters to spaces, insert a '#' character between every punctuation mark and the first word of the following sentence, convert all '#' characters to newline characters, delete all leading spaces on each line, delete all trailing spaces on each line, and save to EXAMPLE.sent*
 
 ## Week 5: Scripting and Configuration Files
 
@@ -115,7 +115,7 @@ uniq -c |
 sort -nr > $2
 echo "$0 complete"
 ```
-5: Bash script for transforming a text file into a word frequency list. The user supplies a source text file to be operated on and a destination file to which the results are written. The script first checks to make sure both a source and destination are supplied, then performs the following operations: remove whitespace, convert spaces to newlines, trim punctuation, sort words into alphabetical order, delete duplicate words (while reporting number of duplicates), sort by number of duplicates, and redirect output into destination file.
+*5: Bash script for transforming a text file into a word frequency list. The user supplies a source text file to be operated on and a destination file to which the results are written. The script first checks to make sure both a source and destination are supplied, then performs the following operations: remove whitespace, convert spaces to newlines, trim punctuation, sort words into alphabetical order, delete duplicate words (while reporting number of duplicates), sort by number of duplicates, and redirect output into destination file.*
 
 ## Week 6: Installing Programs
 
@@ -149,7 +149,7 @@ data/all.no_md.txt: $(NO_MD_BOOKS)
 	
 no_md: $(NO_MD_BOOKS)
 ```
-6: Makefile for metadata trimming, sentence-per-line formatting, and frequency list generation. The first line specifies the list of books upon which the Makefile operates. The next three lines specify conversion patterns, dictating what list is passed in to the pattern as an input as well as how (and where) the output is written. Below this can be seen the rules themselves, which run scripts on their input files and generate the appropriate output. Each rule can be executed individually, or all at once using the `all` rule. The `clean` rule can also be used to delete all generated files, cutting down on filesize and making the program more portable. 
+*6: Makefile for metadata trimming, sentence-per-line formatting, and frequency list generation. The first line specifies the list of books upon which the Makefile operates. The next three lines specify conversion patterns, dictating what list is passed in to the pattern as an input as well as how (and where) the output is written. Below this can be seen the rules themselves, which run scripts on their input files and generate the appropriate output. Each rule can be executed individually, or all at once using the `all` rule. The `clean` rule can also be used to delete all generated files, cutting down on filesize and making the program more portable.*
 
 ## Week 7: Version Control
 
@@ -165,4 +165,4 @@ git status
 git commit -a -m 'add week 7'
 git push origin cmdline-course
 ```
-7: Sequence of git commands. The first shifts project focus to the cmdline-course branch. The second displays the repository's status, showing which files have been added or changed. Running the 'commit' command with the `-a` flag stages all changes and commits them in one fell swoop, while the `-m` flag allows a message to be added in the same command. The final command pushes the changes so that the remote GitHub repository is updated to reflect the changes made locally.
+*7: Sequence of git commands. The first shifts project focus to the cmdline-course branch. The second displays the repository's status, showing which files have been added or changed. Running the 'commit' command with the `-a` flag stages all changes and commits them in one fell swoop, while the `-m` flag allows a message to be added in the same command. The final command pushes the changes so that the remote GitHub repository is updated to reflect the changes made locally.*
