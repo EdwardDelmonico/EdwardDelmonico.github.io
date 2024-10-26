@@ -153,14 +153,16 @@ no_md: $(NO_MD_BOOKS)
 
 ## Week 7: Version Control
 
-```
-No language indicated, so no syntax highlighting. 
-But let's throw in a <b>tag</b>.
-```
+For our final week of instruction, we turned our focus version control. Version control software (such as Git, the tool we used for this course) is essential for large projects with small margins for error. Users establish a repository, or 'repo', essectially a tranche of files that comprise a larger project. Upon initialization, Git creates a record of all files as they exist in their current state. These files are then "tracked", and whenever a tracked file is modified or deleted Git will record the change. Users can then "stage" as many changes as they like and then "commit" these changes. When users commit staged changes, Git updates its record along with a message supplied by the user. This is only the beginning, however. One critical aspect of Git is the ability to "rewind" commits-- users can at any time revert all of their changes to a previous git record, restoring their work to an earlier version. This is especially handy if a Git commit breaks a project or takes it in an undesirable direction. Git also allows users to create "branches", duplicating a project so that additional work can be done on it without compromising the original. This also allows multiple users to collaborate on a project, as each collaborator can develop a different feature in a separate project branch. These branches can then be selectively merged, either with each other or with the original branch. 
 
-## Final Project
+Git's power is compounded further by its remote component GitHub. GitHub allows users to store their repositories online. GitHub repositories can then be "cloned" to local machines. Repositories can also be "forked", which creates a new iteration of the repository in one's own collection. This allows a user to do their own work on a repository without ever compromising the original. The "pull" and "push" functionalities also streamline collaboration on the same project. If a collaborator wishes to work on a repository branch, they can send a pull request. This gathers the most up-to-date version of the branch and copies it to the user's local machine. The user can then do whatever work they wish on the branch, committing changes as they go, before pushing the changes back up to the remote repository. The changes are then disseminated to the remote repository. Again, a crucial aspect of Git's usefulness is that nearly any change can be revoked--erroneous commits, pushes, and merges can all be rolled back.
 
+To create this webpage, I used Git in order to track my changes and create branches for major features. In particular, this particular page is being created within a separate branch from the main project. When I add to the page I ensure that I'm working on the appopriate branch (entitled 'cmdline-course'), review my changes, commit them along with a descriptive message, and push those changes to my remote repository on GitHub. Below can be seen the series of commands I will run in order to review, commit, and push the addition of this section to the page.
+
+```zsh
+git checkout cmdline-course
+git status
+git commit -a -m 'add week 7'
+git push origin cmdline-course
 ```
-No language indicated, so no syntax highlighting. 
-But let's throw in a <b>tag</b>.
-```
+7: Sequence of git commands. The first shifts project focus to the cmdline-course branch. The second displays the repository's status, showing which files have been added or changed. Running the 'commit' command with the `-a` flag stages all changes and commits them in one fell swoop, while the `-m` flag allows a message to be added in the same command. The final command pushes the changes so that the remote GitHub repository is updated to reflect the changes made locally.
